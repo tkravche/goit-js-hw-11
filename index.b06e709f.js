@@ -1,0 +1,2 @@
+const e={searchForm:document.querySelector(".search-form"),inputSearchForm:document.querySelector("input"),searchButton:document.querySelector("button")};e.inputSearchForm.addEventListener("input",(function(e){if(t=e.currentTarget.value.trim(),!t)return})),e.searchButton.addEventListener("submit",(function(e){e.preventDefault(),fetch("https://pixabay.com/api/?key=34754697-0d2595d46a3257cdf22f20f5a&q=yellow+flowers&image_type=photo&orientation=horizontal&safesearch=true").then((e=>e.json())).then((e=>console.log(e)))}));let t="";
+//# sourceMappingURL=index.b06e709f.js.map
