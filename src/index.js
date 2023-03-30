@@ -9,10 +9,6 @@ let page = 1;
 const perPage = 40;
 let searchedImage = '';
 
-
-onScroll();
-onToTopBtn();
-
 const refs = {
   searchForm: document.querySelector('.search-form'),
   searchButton: document.querySelector('.load'),
@@ -59,7 +55,9 @@ function onSearchFormSubmit(e) {
     } else {
       createPhotoCardGallery(data);
       Notiflix.Notify.info(`We found ${data.totalHits} images.`);
-      refs.loadMoreButton.style.display = 'block';
+      if (data.total <= perPage) {
+        refs.loadMoreButton.style.display = 'none';
+      } else refs.loadMoreButton.style.display = 'block';
       page += 1;
       const { height: cardHeight } = document
         .querySelector('.gallery')
@@ -99,7 +97,6 @@ function createPhotoCardMarkup({
 
 function addToGallery(template) {
   refs.gallery.insertAdjacentHTML('beforeend', template);
-
 }
 
 function createPhotoCardGallery(photos) {
@@ -108,7 +105,7 @@ function createPhotoCardGallery(photos) {
     .join('');
 
   addToGallery(template);
-    lightbox.refresh();
+  lightbox.refresh();
 }
 
 function loadMoreImages() {
