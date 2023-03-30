@@ -82,23 +82,24 @@ function createPhotoCardMarkup({
   downloads,
 }) {
   return `<div class="photo-card">
-        <a class="photo__image" ${largeImageURL}">
+        <a class="photo__image" href="${largeImageURL}">
         <img class="gallery__image"
           src="${webformatURL}"
           alt="${tags}"
           loading="lazy"
-        />
+        /></a>
         <div class="info">
           <p class="info__item"><b>Likes</b><br />${likes}</p>
           <p class="info__item"><b>Views</b><br />${views}</p>
           <p class="info__item"><b>Comments</b><br />${comments}</p>
           <p class="info__item"><b>Downloads</b><br />${downloads}</p>
-        </div></a>
+        </div>
       </div>`;
 }
 
 function addToGallery(template) {
   refs.gallery.insertAdjacentHTML('beforeend', template);
+
 }
 
 function createPhotoCardGallery(photos) {
@@ -107,7 +108,7 @@ function createPhotoCardGallery(photos) {
     .join('');
 
   addToGallery(template);
-  lightbox.refresh();
+    lightbox.refresh();
 }
 
 function loadMoreImages() {
